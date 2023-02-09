@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maguimar <maguimar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/19 14:43:46 by maguimar          #+#    #+#             */
-/*   Updated: 2023/02/07 15:35:27 by maguimar         ###   ########.fr       */
+/*   Created: 2022/11/11 16:35:11 by maguimar          #+#    #+#             */
+/*   Updated: 2022/11/11 16:56:00 by maguimar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	push(t_stack *stack, t_item *item)
+void	*ft_lstadd_back(t_list **lst, t_list *new)
 {
-	if (stack->size == 0)
-	{
-		stack->head = item;
-		item->next = NULL;
-		stack->size++;
-	}
-	else
-	{
-		item->next = stack->head;
-		stack->head = item;
-		stack->size++;
-	}
-}
+	t_list	*node;
 
-int	main(int argc, char *argv[])
-{
-
+	if (*lst == NULL)
+	{
+		*lst = new;
+		return (NULL);
+	}
+	node = *lst;
+	while (node && node->next)
+		node = node->next;
+	node->next = new;
+	return (NULL);
 }

@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maguimar <maguimar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/19 14:43:46 by maguimar          #+#    #+#             */
-/*   Updated: 2023/02/07 15:35:27 by maguimar         ###   ########.fr       */
+/*   Created: 2022/11/08 11:47:37 by maguimar          #+#    #+#             */
+/*   Updated: 2022/11/11 16:13:51 by maguimar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	push(t_stack *stack, t_item *item)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	if (stack->size == 0)
-	{
-		stack->head = item;
-		item->next = NULL;
-		stack->size++;
-	}
-	else
-	{
-		item->next = stack->head;
-		stack->head = item;
-		stack->size++;
-	}
-}
+	void	*arr;
 
-int	main(int argc, char *argv[])
-{
-
+	arr = malloc(nmemb * size);
+	if (!arr)
+	{
+		return (NULL);
+	}
+	ft_bzero(arr, (size * nmemb));
+	return (arr);
 }

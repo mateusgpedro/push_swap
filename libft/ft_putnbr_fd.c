@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maguimar <maguimar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/19 14:43:46 by maguimar          #+#    #+#             */
-/*   Updated: 2023/02/07 15:35:27 by maguimar         ###   ########.fr       */
+/*   Created: 2022/11/10 14:57:43 by maguimar          #+#    #+#             */
+/*   Updated: 2022/11/11 16:31:26 by maguimar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	push(t_stack *stack, t_item *item)
+void	ft_putnbr_fd(int n, int fd)
 {
-	if (stack->size == 0)
+	if (n == -2147483648)
 	{
-		stack->head = item;
-		item->next = NULL;
-		stack->size++;
+		ft_putchar_fd('-', fd);
+		ft_putchar_fd('2', fd);
+		ft_putnbr_fd(147483648, fd);
+	}
+	else if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		n = -n;
+		ft_putnbr_fd(n, fd);
+	}
+	else if (n > 9)
+	{
+		ft_putnbr_fd(n / 10, fd);
+		ft_putnbr_fd(n % 10, fd);
 	}
 	else
-	{
-		item->next = stack->head;
-		stack->head = item;
-		stack->size++;
-	}
-}
-
-int	main(int argc, char *argv[])
-{
-
+		ft_putchar_fd(48 + n, fd);
 }

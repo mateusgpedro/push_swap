@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maguimar <maguimar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/19 14:43:46 by maguimar          #+#    #+#             */
-/*   Updated: 2023/02/07 15:35:27 by maguimar         ###   ########.fr       */
+/*   Created: 2022/11/08 14:58:54 by maguimar          #+#    #+#             */
+/*   Updated: 2022/11/15 13:07:45 by maguimar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	push(t_stack *stack, t_item *item)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	if (stack->size == 0)
-	{
-		stack->head = item;
-		item->next = NULL;
-		stack->size++;
-	}
-	else
-	{
-		item->next = stack->head;
-		stack->head = item;
-		stack->size++;
-	}
-}
+	size_t	i;
+	char	*ptr;
 
-int	main(int argc, char *argv[])
-{
-
+	ptr = (char *)malloc((len + 1) * sizeof(char));
+	if (!ptr || !s)
+		return (0);
+	i = 0;
+	while (len > i && *(s + start + i) != '\0' && start < ft_strlen((char *)s))
+	{
+		ptr[i] = *(s + start + i);
+		i++;
+	}
+	ptr[i] = '\0';
+	return (ptr);
 }

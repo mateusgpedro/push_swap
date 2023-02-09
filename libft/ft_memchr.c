@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maguimar <maguimar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/19 14:43:46 by maguimar          #+#    #+#             */
-/*   Updated: 2023/02/07 15:35:27 by maguimar         ###   ########.fr       */
+/*   Created: 2022/11/07 10:56:58 by maguimar          #+#    #+#             */
+/*   Updated: 2022/11/11 16:26:14 by maguimar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	push(t_stack *stack, t_item *item)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	if (stack->size == 0)
-	{
-		stack->head = item;
-		item->next = NULL;
-		stack->size++;
-	}
-	else
-	{
-		item->next = stack->head;
-		stack->head = item;
-		stack->size++;
-	}
-}
+	size_t			i;
+	unsigned char	*cs;
 
-int	main(int argc, char *argv[])
-{
-
+	cs = (unsigned char *) s;
+	i = 0;
+	while (i < n)
+	{
+		if (cs[i] == (unsigned char)c)
+			return ((void *)&cs[i]);
+		i++;
+	}
+	return (NULL);
 }

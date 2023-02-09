@@ -1,34 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maguimar <maguimar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/19 14:43:46 by maguimar          #+#    #+#             */
-/*   Updated: 2023/02/07 15:35:27 by maguimar         ###   ########.fr       */
+/*   Created: 2022/11/11 16:22:54 by maguimar          #+#    #+#             */
+/*   Updated: 2022/11/11 16:22:56 by maguimar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	push(t_stack *stack, t_item *item)
+t_list	*ft_lstlast(t_list *lst)
 {
-	if (stack->size == 0)
+	if (lst)
 	{
-		stack->head = item;
-		item->next = NULL;
-		stack->size++;
+		while (lst->next)
+			lst = lst->next;
 	}
 	else
-	{
-		item->next = stack->head;
-		stack->head = item;
-		stack->size++;
-	}
-}
-
-int	main(int argc, char *argv[])
-{
-
+		return (NULL);
+	return (lst);
 }

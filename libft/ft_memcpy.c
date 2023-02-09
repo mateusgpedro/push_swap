@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maguimar <maguimar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/19 14:43:46 by maguimar          #+#    #+#             */
-/*   Updated: 2023/02/07 15:35:27 by maguimar         ###   ########.fr       */
+/*   Created: 2022/11/03 12:36:56 by maguimar          #+#    #+#             */
+/*   Updated: 2022/11/11 16:29:01 by maguimar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	push(t_stack *stack, t_item *item)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	if (stack->size == 0)
-	{
-		stack->head = item;
-		item->next = NULL;
-		stack->size++;
-	}
-	else
-	{
-		item->next = stack->head;
-		stack->head = item;
-		stack->size++;
-	}
-}
+	size_t	index;
 
-int	main(int argc, char *argv[])
-{
-
+	if ((dest == NULL) && (src == NULL))
+	{
+		return (NULL);
+	}
+	index = 0;
+	while (index < n)
+	{
+		((unsigned char *)dest)[index] = ((unsigned char *)src)[index];
+		index++;
+	}
+	return (dest);
 }

@@ -1,34 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maguimar <maguimar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/19 14:43:46 by maguimar          #+#    #+#             */
-/*   Updated: 2023/02/07 15:35:27 by maguimar         ###   ########.fr       */
+/*   Created: 2022/11/02 14:45:40 by maguimar          #+#    #+#             */
+/*   Updated: 2022/11/07 12:14:01 by maguimar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	push(t_stack *stack, t_item *item)
+int	ft_isalpha(int c)
 {
-	if (stack->size == 0)
+	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
 	{
-		stack->head = item;
-		item->next = NULL;
-		stack->size++;
+		return (1);
 	}
 	else
 	{
-		item->next = stack->head;
-		stack->head = item;
-		stack->size++;
+		return (0);
 	}
-}
-
-int	main(int argc, char *argv[])
-{
-
 }

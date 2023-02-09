@@ -1,34 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maguimar <maguimar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/19 14:43:46 by maguimar          #+#    #+#             */
-/*   Updated: 2023/02/07 15:35:27 by maguimar         ###   ########.fr       */
+/*   Created: 2022/11/03 11:54:12 by maguimar          #+#    #+#             */
+/*   Updated: 2022/11/03 11:57:44 by maguimar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-void	push(t_stack *stack, t_item *item)
+int	ft_isprint(int c)
 {
-	if (stack->size == 0)
+	if (c >= 32 && c <= 126)
 	{
-		stack->head = item;
-		item->next = NULL;
-		stack->size++;
+		return (1);
 	}
 	else
 	{
-		item->next = stack->head;
-		stack->head = item;
-		stack->size++;
+		return (0);
 	}
-}
-
-int	main(int argc, char *argv[])
-{
-
 }

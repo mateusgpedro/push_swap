@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_printfd.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maguimar <maguimar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/19 14:43:46 by maguimar          #+#    #+#             */
-/*   Updated: 2023/02/07 15:35:27 by maguimar         ###   ########.fr       */
+/*   Created: 2022/12/05 12:05:03 by maguimar          #+#    #+#             */
+/*   Updated: 2022/12/06 14:51:37 by maguimar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/ft_printf.h"
 
-void	push(t_stack *stack, t_item *item)
+int	ft_printfd(long nb)
 {
-	if (stack->size == 0)
-	{
-		stack->head = item;
-		item->next = NULL;
-		stack->size++;
-	}
-	else
-	{
-		item->next = stack->head;
-		stack->head = item;
-		stack->size++;
-	}
-}
+	int	count;
 
-int	main(int argc, char *argv[])
-{
-
+	count = 0;
+	if (nb < 0)
+	{
+		nb *= -1;
+		count += ft_printfc('-');
+	}
+	if (nb < 10)
+	{
+		count += ft_printfc(nb + '0');
+	}
+	else if (nb >= 10)
+	{
+		count += ft_printfd(nb / 10);
+		count += ft_printfd(nb % 10);
+	}
+	return (count);
 }

@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maguimar <maguimar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/19 14:43:46 by maguimar          #+#    #+#             */
-/*   Updated: 2023/02/07 15:35:27 by maguimar         ###   ########.fr       */
+/*   Created: 2022/11/08 16:49:41 by maguimar          #+#    #+#             */
+/*   Updated: 2022/11/11 16:17:51 by maguimar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	push(t_stack *stack, t_item *item)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	if (stack->size == 0)
-	{
-		stack->head = item;
-		item->next = NULL;
-		stack->size++;
-	}
-	else
-	{
-		item->next = stack->head;
-		stack->head = item;
-		stack->size++;
-	}
-}
+	char	*new_string;
+	size_t	s1_len;
+	size_t	s2_len;
 
-int	main(int argc, char *argv[])
-{
-
+	s1_len = ft_strlen(s1);
+	s2_len = ft_strlen(s2);
+	new_string = (char *)malloc(sizeof(char) * (s2_len + s1_len + 1));
+	if (!new_string)
+		return (NULL);
+	ft_memcpy(new_string, s1, s1_len);
+	ft_memcpy(new_string + s1_len, s2, s2_len + 1);
+	return (new_string);
 }
