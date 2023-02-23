@@ -6,11 +6,11 @@
 /*   By: maguimar <maguimar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 13:16:14 by maguimar          #+#    #+#             */
-/*   Updated: 2023/02/09 14:50:47 by maguimar         ###   ########.fr       */
+/*   Updated: 2023/02/09 17:06:31 by maguimar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 void	reverse_rotate(t_stack *stack)
 {
@@ -65,5 +65,5 @@ void pb(t_stack *stackA, t_stack *stackB)
 
 void swap_item(t_stack *stack)
 {
-	swap(stack->head->value, stack->head->next->value);
+	swap(&stack->head->value, &stack->head->next->value);
 }

@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   frees.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maguimar <maguimar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/06 14:47:23 by maguimar          #+#    #+#             */
-/*   Updated: 2023/02/09 17:17:26 by maguimar         ###   ########.fr       */
+/*   Created: 2023/02/15 17:07:44 by maguimar          #+#    #+#             */
+/*   Updated: 2023/02/23 12:04:39 by maguimar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	get_last_element(int *list)
+void	free_strs(char **strs)
 {
-	int i;
-	int result;
+	int	i;
 
 	i = 0;
-	while(list[i])
+	while (strs[i])
 	{
-		result = list[i];
+		free(strs[i])
 		i++;
 	}
-	return result;
+	free(strs);
 }
 
-void swap(int *a, int *b)
+void	free_stack()
 {
-	int tmp;
 
-	tmp = *a;
-	*a = *b;
-	*b = tmp;
 }

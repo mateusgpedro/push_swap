@@ -6,7 +6,7 @@
 #    By: maguimar <maguimar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/09 14:51:39 by maguimar          #+#    #+#              #
-#    Updated: 2023/02/09 16:03:54 by maguimar         ###   ########.fr        #
+#    Updated: 2023/02/09 17:02:56 by maguimar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ RM = rm -rf
 LIBFT = ./libft/libft.a
 
 SRC = src/push_swap.c src/rules.c src/utils.c
-OBJ = $(SRC_CLIENT:%.c=%.o)
+OBJ = $(SRC:%.c=%.o)
 
 all: $(NAME)
 
