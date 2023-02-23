@@ -6,7 +6,7 @@
 /*   By: maguimar <maguimar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 14:43:46 by maguimar          #+#    #+#             */
-/*   Updated: 2023/02/23 12:06:26 by maguimar         ###   ########.fr       */
+/*   Updated: 2023/02/23 13:02:53 by maguimar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,25 +40,15 @@ t_item	*create_new_item(int val)
 
 int	main(int argc, char *argv[])
 {
-	char **splitted;
-	int *values;
-	int i;
-	int res;
 	t_stack *stackA;
 
-	i = 0;
+	stackA = malloc(sizeof(t_stack *));
+
 	if (argc == 2)
 		init_with_split(stackA, argv[1]);
 	else if (argc >= 3)
 	{
-		while (i < argc - 1)
-		{
-			res = ft_atol(&values, argv[i + 1]);
-			if (res == 0)
-				free_stack();
-			i++;
-		}
-		init_stack(values, stackA, i);
+		init_with_args(stackA, argv, argc - 1);
 	}
 	else
 	{

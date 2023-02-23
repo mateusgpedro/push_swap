@@ -1,31 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   frees.c                                            :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maguimar <maguimar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/15 17:07:44 by maguimar          #+#    #+#             */
-/*   Updated: 2023/02/23 13:04:22 by maguimar         ###   ########.fr       */
+/*   Created: 2023/02/13 12:01:00 by maguimar          #+#    #+#             */
+/*   Updated: 2023/02/23 14:55:57 by maguimar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	free_strs(char **strs)
+int	ft_atol(int *value, const char *str)
 {
-	int	i;
+	long long	res;
+	int	sign;
 
-	i = 0;
-	while (strs[i])
+	// value = 0;
+	sign = 1;
+	while ((*str >= 8 && *str <= 13) || *str == ' ')
+		str++;
+	if (*str == '+' || *str == '-')
 	{
-		free(strs[i]);
-		i++;
+		if (*str == '-')
+			sign *= -1;
+		str++;
 	}
-	free(strs);
-}
+	while (*str)
+	{
+		if (*str >= '0' && *str <= '9')
+			res = res * 10 + (*str - '0');
+		else
+			return 0;
+		str++;
+	}
+	*value = (int) res;
+	if (res > INT_MAX || res < INT_MIN)
+		return 0;
 
-void	free_stack()
-{
-
+	return 1;
 }

@@ -6,7 +6,7 @@
 /*   By: maguimar <maguimar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 14:04:30 by maguimar          #+#    #+#             */
-/*   Updated: 2023/02/14 16:00:20 by maguimar         ###   ########.fr       */
+/*   Updated: 2023/02/23 14:01:56 by maguimar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,6 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 /*...---ADDONS---*/
-int	ft_atol(int *value, const char *str);
+// int	ft_atol(int *value, const char *str);
 
 #endif
