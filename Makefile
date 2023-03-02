@@ -1,25 +1,35 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: maguimar <maguimar@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/02/09 14:51:39 by maguimar          #+#    #+#              #
-#    Updated: 2023/02/23 14:01:35 by maguimar         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME = push_swap.a
 
-CC = cc
+CC = cc -g
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 
-SRC = src/push_swap.c src/rules.c src/utils.c src/algo.c src/frees.c src/init.c src/ft_atol.c
-OBJ = $(SRC:.c=.o)
+LIBFT = ./libft/libft.a
 
-all: $(OBJ)
-	make -C ./libft
-	cp ./libft/libft.a .
-	$(CC) $(CFLAGS) $(OBJ) libft.a -o push_swap
+SRCS = 	src/algo.c \
+		src/frees.c \
+		src/init.c \
+		src/push_swap.c \
+		src/rules.c \
+		src/utils.c \
+		src/ft_atol.c \
+
+OBJS = $(SRCS:%.c=%.o)
+
+all: $(NAME)
+
+$(LIBFT):
+	@$(MAKE) -C ./libft
+
+$(NAME): $(OBJS) $(LIBFT)
+	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o push_swap
+
+clean:
+	@$(MAKE) clean -C ./libft
+	@$(RM) $(OBJS)
+
+fclean: clean
+	@$(MAKE) fclean -C ./libft
+	@$(RM) $(NAME) push_swap
+
+re: fclean all

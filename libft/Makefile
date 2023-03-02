@@ -6,13 +6,13 @@
 #    By: maguimar <maguimar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/02 15:43:01 by maguimar          #+#    #+#              #
-#    Updated: 2023/02/23 13:08:02 by maguimar         ###   ########.fr        #
+#    Updated: 2023/03/02 17:27:56 by maguimar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-CC = cc
+CC = cc -c
 CFLAGS = -Wall -Wextra -Werror
 
 SRC = ft_isalpha.c ft_atoi.c ft_strlen.c ft_strlcat.c \
@@ -25,7 +25,7 @@ SRC = ft_isalpha.c ft_atoi.c ft_strlen.c ft_strlcat.c \
 		ft_strmapi.c ft_striteri.c ft_putchar_fd.c 	ft_putstr_fd.c \
 		ft_putendl_fd.c ft_putnbr_fd.c ft_printf.c ft_printfc.c \
 		ft_printfd.c ft_printfs.c ft_printfu.c ft_printf_hexa.c \
-		ft_printfp.c ft_atol.c
+		ft_printfp.c
 
 OBJ = $(SRC:.c=.o)
 

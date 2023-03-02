@@ -6,7 +6,7 @@
 /*   By: maguimar <maguimar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 14:43:46 by maguimar          #+#    #+#             */
-/*   Updated: 2023/02/23 13:02:53 by maguimar         ###   ########.fr       */
+/*   Updated: 2023/03/02 17:47:51 by maguimar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,5 @@ int	main(int argc, char *argv[])
 	{
 		ft_printf("ERROR");
 	}
+	// ft_printf("Ola")
 }
