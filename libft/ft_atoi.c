@@ -6,7 +6,7 @@
 /*   By: maguimar <maguimar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 10:57:47 by maguimar          #+#    #+#             */
-/*   Updated: 2023/01/11 14:27:22 by maguimar         ###   ########.fr       */
+/*   Updated: 2023/03/03 13:50:36 by maguimar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,6 @@ int	ft_atoi(const char *str)
 
 	res = 0;
 	sign = 1;
-	while (*str == ' ' || *str == '\t' || *str == '\n'
-		|| *str == '\v' || *str == '\f' || *str == '\r')
-		str++;
 	if (*str == '+' || *str == '-')
 	{
 		if (*str == '-')

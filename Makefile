@@ -12,7 +12,6 @@ SRCS = 	src/algo.c \
 		src/push_swap.c \
 		src/rules.c \
 		src/utils.c \
-		src/ft_atol.c \
 
 OBJS = $(SRCS:%.c=%.o)
 
