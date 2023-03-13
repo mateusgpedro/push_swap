@@ -6,7 +6,7 @@
 /*   By: maguimar <maguimar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 14:47:23 by maguimar          #+#    #+#             */
-/*   Updated: 2023/03/03 14:23:25 by maguimar         ###   ########.fr       */
+/*   Updated: 2023/03/13 14:06:25 by maguimar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,20 @@ int	ft_atol(const char *str, int *value)
 		str++;
 	}
 	*value *= sign;
-	if (value > INT_MAX || value < INT_MIN)
+	if (*value > INT_MAX || *value < INT_MIN)
 		return (0);
 	return (1
 	);
+}
+
+int	check_duplicates(int *values, int value)
+{
+	int i = 0;
+	while (values[i] != NULL)
+	{
+		if (values[i] == value)
+			return (0);
+		i++;
+	}
+	return (1);
 }

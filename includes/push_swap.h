@@ -6,7 +6,7 @@
 /*   By: maguimar <maguimar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 13:04:59 by maguimar          #+#    #+#             */
-/*   Updated: 2023/03/03 14:23:21 by maguimar         ###   ########.fr       */
+/*   Updated: 2023/03/13 14:06:35 by maguimar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,6 @@ void	init_stack(int *values, t_stack *stack, int size);
 t_item	*create_new_item(int val);
 void	free_strs(char **strs);
 int		ft_atol(const char *str, int *value);
+int		check_duplicates(int *values, int value);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: maguimar <maguimar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 13:48:38 by maguimar          #+#    #+#             */
-/*   Updated: 2023/03/03 15:06:02 by maguimar         ###   ########.fr       */
+/*   Updated: 2023/03/13 14:11:54 by maguimar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,21 @@ void	init_with_split(t_stack *stack, char *str)
 	int	i;
 	int size;
 
+
+	splitted = ft_split(str, ' ');
 	size = 0;
 	while(splitted[size] != NULL)
 		size++;
 	values = malloc(sizeof(int) * size);
 	i = 0;
-	while (splitted[i] != '\0')
+	while (splitted[i] != NULL)
 	{
-		res = ft_atol(splitted[i], &values[i]);
+		//res = ft_atol(splitted[i], &values[i]);
+		if (ft_atol(splitted[i], &values[i]) == 0 || check_duplicates(values, values[i]) == 0)
+			res = 0;
 		if (res == 0)
 		{
+			ft_printf("ERROR");
 			free_strs(splitted);
 			return ;
 		}
@@ -37,11 +42,11 @@ void	init_with_split(t_stack *stack, char *str)
 	}
 	init_stack(values, stack, size);
 	i = 0;
-	while(values[i] != '\0')
+	/* while(values[i] != '\0')
 	{
-		ft_printf("%d", values[i]);
+		ft_printf("%d\n", values[i]);
 		i++;
-	}
+	} */
 }
 
 void	init_with_args(t_stack *stack, char **strs, int size)
@@ -52,11 +57,14 @@ void	init_with_args(t_stack *stack, char **strs, int size)
 
 	i = 0;
 	values = malloc(sizeof(int) * size);
-	while (strs[i] != '\0')
+	while (strs[i] != NULL)
 	{
-		res = ft_atol(strs[i], &values[i]);
+		//res = ;
+		if (ft_atol(strs[i], &values[i]) == 0 || check_duplicates(values, values[i]) == 0)
+			res = 0;
 		if (res == 0)
 		{
+			ft_printf("ERROR");
 			free(values);
 			return ;
 		}
@@ -64,11 +72,11 @@ void	init_with_args(t_stack *stack, char **strs, int size)
 	}
 	init_stack(values, stack, size);
 	i = 0;
-	while(values[i] != '\0')
+	/* while(values[i] != '\0')
 	{
 		ft_printf("%d", values[i]);
 		i++;
-	}
+	} */
 }
 
 void init_stack(int *values, t_stack *stack, int size)
@@ -86,11 +94,10 @@ void init_stack(int *values, t_stack *stack, int size)
 }
 
 
+
 /*
 	WHAT DEFINES AN INVALID INPUT?
 
 	- DUPLICATES
 	- NON NUMERIC INPUT
-
-
 */
