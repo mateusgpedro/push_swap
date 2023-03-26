@@ -49,5 +49,3 @@ int	main(int argc, char *argv[])
 		init_with_args(stackA, argv, argc - 1);
 	else
 		ft_printf("ERROR");
-	// ft_printf("Ola")
-}

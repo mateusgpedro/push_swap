@@ -45,7 +45,7 @@ void pa(t_stack *stackA, t_stack *stackB)
 {
 	t_item *item;
 
-	if (stackB <= 0)
+	if (stackB->size <= 0)
 		return;
 	item = stackB->head;
 	stackB->head = stackB->head->next;

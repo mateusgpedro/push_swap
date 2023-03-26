@@ -39,5 +39,13 @@ t_item	*create_new_item(int val);
 void	free_strs(char **strs);
 int		ft_atol(const char *str, int *value);
 int		check_duplicates(int *values, int value);
+int     subdivide_first_elements(t_stack *stack);
+int     subdivide_last_elements(t_stack *stack, int size);
+void    rotate_to_lowest(t_stack *stack, stack_t *desired_stack, int dir, int value);
+void	rotate(t_stack *stack);
+void	reverse_rotate(t_stack *stack);
+void    pa(t_stack *stackA, t_stack *stackB);
+void    pb(t_stack *stackA, t_stack *stackB);
+void    swap_item(t_stack *stack);
 
 #endif

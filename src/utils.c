@@ -38,8 +38,10 @@ void swap(int *a, int *b)
 int	ft_atol(const char *str, int *value)
 {
 	int	sign;
+    long long l_str;
 
 	sign = 1;
+    l_str = 0;
 	if (*str == '+' || *str == '-')
 	{
 		if (*str == '-')
@@ -49,16 +51,16 @@ int	ft_atol(const char *str, int *value)
 	while (*str)
 	{
 		if (*str >= '0' && *str <= '9')
-			*value = *value * 10 + (*str - '0');
+			l_str = l_str * 10 + (*str - '0');
 		else
 			return (0);
 		str++;
 	}
-	*value *= sign;
+	l_str *= sign;
 	if (*value > INT_MAX || *value < INT_MIN)
 		return (0);
-	return (1
-	);
+    *value = l_str;
+	return (1);
 }
 
 int	check_duplicates(int *values, int value)

@@ -29,7 +29,6 @@ void	init_with_split(t_stack *stack, char *str)
 	i = 0;
 	while (splitted[i] != NULL)
 	{
-		//res = ft_atol(splitted[i], &values[i]);
 		if (ft_atol(splitted[i], &values[i]) == 0 || check_duplicates(values, values[i]) == 0)
 			res = 0;
 		if (res == 0)
@@ -91,6 +90,7 @@ void init_stack(int *values, t_stack *stack, int size)
 		push(stack, item);
 		i++;
 	}
+
 }
 
 
