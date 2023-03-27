@@ -6,7 +6,7 @@
 /*   By: maguimar <maguimar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 13:48:38 by maguimar          #+#    #+#             */
-/*   Updated: 2023/03/13 14:11:54 by maguimar         ###   ########.fr       */
+/*   Updated: 2023/03/27 16:00:12 by maguimar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,10 @@ void	init_with_split(t_stack *stack, char *str)
 			free_strs(splitted);
 			return ;
 		}
+		stack->size++;
 		i++;
 	}
-	init_stack(values, stack, size);
+	init_stack(values, stack);
 	i = 0;
 	/* while(values[i] != '\0')
 	{
@@ -67,9 +68,10 @@ void	init_with_args(t_stack *stack, char **strs, int size)
 			free(values);
 			return ;
 		}
+		stack->size++;
 		i++;
 	}
-	init_stack(values, stack, size);
+	init_stack(values, stack);
 	i = 0;
 	/* while(values[i] != '\0')
 	{
@@ -78,13 +80,13 @@ void	init_with_args(t_stack *stack, char **strs, int size)
 	} */
 }
 
-void init_stack(int *values, t_stack *stack, int size)
+void init_stack(int *values, t_stack *stack)
 {
 	int i;
 	t_item *item;
 
 	i = 0;
-	while (i < size)
+	while (i < stack->size)
 	{
 		item = create_new_item(values[i]);
 		push(stack, item);
