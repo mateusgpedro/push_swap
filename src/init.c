@@ -6,7 +6,7 @@
 /*   By: maguimar <maguimar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 13:48:38 by maguimar          #+#    #+#             */
-/*   Updated: 2023/03/27 16:00:12 by maguimar         ###   ########.fr       */
+/*   Updated: 2023/03/27 18:26:55 by maguimar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	init_with_split(t_stack *stack, char *str)
 {
-	char **splitted;
-	int	res;
-	int *values;
-	int	i;
-	int size;
+	char	**splitted;
+	int		res;
+	int		*values;
+	int		i;
+	int		size;
 
 
 	splitted = ft_split(str, ' ');
@@ -68,6 +68,7 @@ void	init_with_args(t_stack *stack, char **strs, int size)
 			free(values);
 			return ;
 		}
+
 		stack->size++;
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: maguimar <maguimar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 13:04:59 by maguimar          #+#    #+#             */
-/*   Updated: 2023/03/27 15:59:55 by maguimar         ###   ########.fr       */
+/*   Updated: 2023/03/27 18:18:43 by maguimar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 
 typedef struct s_item
 {
+	int index;
 	int value;
 	struct s_item *next;
 }	t_item;
@@ -34,7 +35,7 @@ void	init_with_split(t_stack *stack, char *str);
 void	init_with_args(t_stack *stack, char **strs, int size);
 void	push(t_stack *stack, t_item *item);
 void	swap(int *a, int *b);
-void init_stack(int *values, t_stack *stack)
+void	init_stack(int *values, t_stack *stack);
 t_item	*create_new_item(int val);
 void	free_strs(char **strs);
 int		ft_atol(const char *str, int *value);
