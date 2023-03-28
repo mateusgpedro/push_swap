@@ -6,7 +6,7 @@
 /*   By: maguimar <maguimar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 14:43:46 by maguimar          #+#    #+#             */
-/*   Updated: 2023/03/27 15:55:43 by maguimar         ###   ########.fr       */
+/*   Updated: 2023/03/28 12:51:57 by maguimar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_item	*create_new_item(int val)
 
 int	main(int argc, char *argv[])
 {
-	t_stack *stackA;
+	t_stack	*stackA;
 
 	stackA = ft_calloc(1, sizeof(t_stack *));
 	stackA->size = 0;
@@ -50,4 +50,5 @@ int	main(int argc, char *argv[])
 		init_with_args(stackA, argv, argc - 1);
 	else
 		ft_printf("ERROR");
+	start_algorithm(stackA);
 }

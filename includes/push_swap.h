@@ -6,7 +6,7 @@
 /*   By: maguimar <maguimar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 13:04:59 by maguimar          #+#    #+#             */
-/*   Updated: 2023/03/27 18:18:43 by maguimar         ###   ########.fr       */
+/*   Updated: 2023/03/28 13:03:26 by maguimar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,9 @@ void	reverse_rotate(t_stack *stack);
 void	pa(t_stack *stackA, t_stack *stackB);
 void	pb(t_stack *stackA, t_stack *stackB);
 void	swap_item(t_stack *stack);
+void	start_algorithm(t_stack *stackA);
+void	two_elemtens(t_stack *stackA);
+void	three_elemtens(t_stack *stackA, t_stack *stackB);
+t_item	*first(t_stack *stack, int index)
 
 #endif

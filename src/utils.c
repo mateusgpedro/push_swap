@@ -6,7 +6,7 @@
 /*   By: maguimar <maguimar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 14:47:23 by maguimar          #+#    #+#             */
-/*   Updated: 2023/03/27 15:52:02 by maguimar         ###   ########.fr       */
+/*   Updated: 2023/03/28 12:40:23 by maguimar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ void swap(int *a, int *b)
 int	ft_atol(const char *str, int *value)
 {
 	int	sign;
-    long long l_str;
+	long long l_str;
 
 	sign = 1;
-    l_str = 0;
+	l_str = 0;
 	if (*str == '+' || *str == '-')
 	{
 		if (*str == '-')
@@ -59,7 +59,7 @@ int	ft_atol(const char *str, int *value)
 	l_str *= sign;
 	if (l_str > INT_MAX || l_str < INT_MIN)
 		return (0);
-    *value = l_str;
+	*value = l_str;
 	return (1);
 }
 

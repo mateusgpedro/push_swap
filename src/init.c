@@ -6,7 +6,7 @@
 /*   By: maguimar <maguimar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 13:48:38 by maguimar          #+#    #+#             */
-/*   Updated: 2023/03/27 18:26:55 by maguimar         ###   ########.fr       */
+/*   Updated: 2023/03/28 12:37:18 by maguimar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,6 @@ void init_stack(int *values, t_stack *stack)
 		push(stack, item);
 		i++;
 	}
-
 }
 
 
