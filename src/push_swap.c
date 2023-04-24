@@ -6,7 +6,7 @@
 /*   By: maguimar <maguimar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 14:43:46 by maguimar          #+#    #+#             */
-/*   Updated: 2023/03/28 12:51:57 by maguimar         ###   ########.fr       */
+/*   Updated: 2023/04/06 13:56:58 by maguimar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,5 @@ int	main(int argc, char *argv[])
 	else
 		ft_printf("ERROR");
 	start_algorithm(stackA);
+	print_stack(stackA);
 }

@@ -6,33 +6,33 @@
 /*   By: maguimar <maguimar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 15:31:30 by maguimar          #+#    #+#             */
-/*   Updated: 2023/03/28 14:43:59 by maguimar         ###   ########.fr       */
+/*   Updated: 2023/04/06 15:05:53 by maguimar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	three_elemtens(t_stack *stackA, t_stack *stackB)
+void	three_elemtens(t_stack *stackA)
 {
-	t_item *item;
+	int el_1;
+	int el_2;
+	int el_3;
 
-	item = stackA->head;
-	if (first(stackA, 0)->value > first(stackA, 1)->value
-		&& first(stackA, 0)->value < first(stackA, 2)->value)
+	el_1 = first(stackA, 0)->value;
+	el_2 = first(stackA, 1)->value;
+	el_3 = first(stackA, 2)->value;
+	if (el_1 > el_2 && el_2 < el_3 && el_3 > el_1)
 		swap_item(stackA);
-	else if (first(stackA, 0)->value > first(stackA, 1)->value
-		&& first(stackA, 0)->value > first(stackA, 2)->value)
+	else if (el_1 > el_2 && el_2 < el_3 && el_3 < el_1)
 		rotate(stackA);
-	else if (first(stackA, 0)->value < first(stackA, 1)->value
-		&& first(stackA, 0)->value > first(stackA, 2)->value)
+	else if (el_1 < el_2 && el_2 > el_3 && el_3 < el_1)
 		reverse_rotate(stackA);
-	else if (first(stackA, 0)->value > first(stackA, 1)->value
-		&& first(stackA, 1)->value > first(stackA, 2)->value)
+	else if (el_1 > el_2 && el_2 > el_3 && el_3 < el_1)
 	{
 		swap_item(stackA);
 		reverse_rotate(stackA);
 	}
-	else
+	else if (el_1 < el_2 && el_2 > el_3 && el_3 < el_1)
 	{
 		swap_item(stackA);
 		rotate(stackA);

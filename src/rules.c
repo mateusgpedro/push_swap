@@ -6,7 +6,7 @@
 /*   By: maguimar <maguimar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 13:16:14 by maguimar          #+#    #+#             */
-/*   Updated: 2023/02/09 17:06:31 by maguimar         ###   ########.fr       */
+/*   Updated: 2023/04/06 17:13:36 by maguimar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void pa(t_stack *stackA, t_stack *stackB)
 		return;
 	item = stackB->head;
 	stackB->head = stackB->head->next;
+	stackB->size--;
 	push(stackA, item);
 }
 
@@ -60,6 +61,7 @@ void pb(t_stack *stackA, t_stack *stackB)
 			return;
 		item = stackA->head;
 		stackA->head = stackA->head->next;
+		stackA->size--;
 		push(stackB, item);
 }
 

@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   algo2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maguimar <maguimar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maguimar <maguimar@student.42porto.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/27 15:25:02 by maguimar          #+#    #+#             */
-/*   Updated: 2023/03/28 12:58:59 by maguimar         ###   ########.fr       */
+/*   Created: 2023/04/13 15:20:32 by maguimar          #+#    #+#             */
+/*   Updated: 2023/04/13 15:22:37 by maguimar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	two_elemtens(t_stack *stackA)
+void	two_elements(t_stack *stackA)
 {
 	t_item *item;
 
 	item = stackA->head;
-	if (item->next->value > item->value)
+	if (item->value > item->next->value)
 		swap_item(stackA);
 }

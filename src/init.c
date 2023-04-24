@@ -6,7 +6,7 @@
 /*   By: maguimar <maguimar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 13:48:38 by maguimar          #+#    #+#             */
-/*   Updated: 2023/03/28 12:37:18 by maguimar         ###   ########.fr       */
+/*   Updated: 2023/04/06 13:57:54 by maguimar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,20 @@ void	init_with_split(t_stack *stack, char *str)
 	i = 0;
 	while (splitted[i] != NULL)
 	{
-		if (ft_atol(splitted[i], &values[i]) == 0 || check_duplicates(values, values[i]) == 0)
-			res = 0;
+		res = 0;
+		if (ft_atol(splitted[i], &values[i]) == 1 )
+			res = 1;
 		if (res == 0)
 		{
 			ft_printf("ERROR");
 			free_strs(splitted);
 			return ;
 		}
-		stack->size++;
 		i++;
 	}
-	init_stack(values, stack);
-	i = 0;
-	/* while(values[i] != '\0')
+	init_stack(values, stack, i);
+	/* i = 0;
+	while(values[i] != '\0')
 	{
 		ft_printf("%d\n", values[i]);
 		i++;
@@ -57,37 +57,36 @@ void	init_with_args(t_stack *stack, char **strs, int size)
 
 	i = 0;
 	values = malloc(sizeof(int) * size);
-	while (strs[i] != NULL)
+	while (strs[i + 1] != NULL)
 	{
-		//res = ;
-		if (ft_atol(strs[i], &values[i]) == 0 || check_duplicates(values, values[i]) == 0)
-			res = 0;
+		res = 0;
+		if (ft_atol(strs[i + 1], &values[i]) == 1 )
+			res = 1;
 		if (res == 0)
 		{
 			ft_printf("ERROR");
 			free(values);
 			return ;
 		}
-
-		stack->size++;
 		i++;
 	}
-	init_stack(values, stack);
-	i = 0;
-	/* while(values[i] != '\0')
+	init_stack(values, stack, i);
+	/* i = 0;
+	 while(values[i] != '\0')
 	{
-		ft_printf("%d", values[i]);
+		ft_printf("%d\n", values[i]);
 		i++;
 	} */
 }
 
-void init_stack(int *values, t_stack *stack)
+void	init_stack(int *values, t_stack *stack, int size)
 {
-	int i;
-	t_item *item;
+	int		i;
+	t_item	*item;
 
 	i = 0;
-	while (i < stack->size)
+
+	while (i < size)
 	{
 		item = create_new_item(values[i]);
 		push(stack, item);
