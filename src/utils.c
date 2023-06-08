@@ -12,20 +12,6 @@
 
 #include "../includes/push_swap.h"
 
-int	get_last_element(int *list)
-{
-	int i;
-	int result;
-
-	i = 0;
-	while(list[i])
-	{
-		result = list[i];
-		i++;
-	}
-	return result;
-}
-
 void swap(int *a, int *b)
 {
 	int tmp;
@@ -62,7 +48,7 @@ int	ft_atol(const char *str, int *value)
 	*value = l_str;
 	return (1);
 }
-
+/*
 int	check_duplicates(int *values, int value)
 {
 	int	i;
@@ -76,27 +62,29 @@ int	check_duplicates(int *values, int value)
 	}
 	return (1);
 }
+*/
 
-// void	ft_sort_int_tab(t_stack *stack)
-// {
-// 	int	i;
-// 	int	j;
-// 	int	temp;
+void	ft_sort_int_tab(t_ordered_stack *orderedStack)
+{
+	int	i;
+	int	j;
+	int	temp;
 
-// 	i = 0;
-// 	while (i < size - 1)
-// 	{
-// 		j = 0;
-// 		while (j < size - 1)
-// 		{
-// 			if (tab[j] > tab[j + 1])
-// 			{
-// 				temp = tab[j];
-// 				tab[j] = tab[j + 1];
-// 				tab[j + 1] = temp;
-// 			}
-// 			j++;
-// 		}
-// 		i++;
-// 	}
-// }
+	i = 0;
+	while (i < orderedStack->size)
+	{
+		j = 0;
+		while (j < orderedStack->size)
+		{
+			if (orderedStack->order[j] > orderedStack->order[j + 1])
+			{
+				temp = orderedStack->order[j];
+				orderedStack->order[j] = orderedStack->order[j + 1];
+				orderedStack->order[j + 1] = temp;
+			}
+			j++;
+		}
+		i++;
+	}
+}
+

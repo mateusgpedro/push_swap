@@ -30,6 +30,15 @@ typedef struct s_stack
 	t_item *head;
 }				t_stack;
 
+typedef struct s_ordered_stack
+{
+	int	size;
+	int	*order;
+	int hold_first;
+	int hold_second;
+
+}				t_ordered_stack;
+
 //PROGRAM
 void	init_with_split(t_stack *stack, char *str);
 void	init_with_args(t_stack *stack, char **strs, int size);
@@ -53,8 +62,8 @@ void	two_elements(t_stack *stackA);
 void	three_elemtens(t_stack *stackA);
 void	five_elements(t_stack *stackA, t_stack * stackB);
 t_item	*first(t_stack *stack, int index);
-int	find_max(t_stack *stack);
-int	find_min(t_stack *stack);
+int		find_max(t_stack *stack);
+int		find_min(t_stack *stack);
 
 // TESTING
 void print_stack(t_stack *stack);
