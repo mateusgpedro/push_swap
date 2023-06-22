@@ -34,6 +34,8 @@ typedef struct s_ordered_stack
 {
 	int	size;
 	int	*order;
+    int last_chunk_size;
+    int chunk_size;
 	int hold_first;
 	int hold_second;
 
@@ -48,12 +50,8 @@ void	init_stack(int *values, t_stack *stack, int size);
 t_item	*create_new_item(int val);
 void	free_strs(char **strs);
 int		ft_atol(const char *str, int *value);
-int		check_duplicates(int *values, int value);
-int		subdivide_first_elements(t_stack *stack);
-int		subdivide_last_elements(t_stack *stack, int size);
-void	rotate_to_lowest(t_stack *stackA, t_stack *stackB, int dir, int value);
-void	rotate(t_stack *stack);
-void	reverse_rotate(t_stack *stack);
+void	rotate(t_stack *stack, int times);
+void	reverse_rotate(t_stack *stack, int times);
 void	pa(t_stack *stackA, t_stack *stackB);
 void	pb(t_stack *stackA, t_stack *stackB);
 void	swap_item(t_stack *stack);
@@ -64,6 +62,15 @@ void	five_elements(t_stack *stackA, t_stack * stackB);
 t_item	*first(t_stack *stack, int index);
 int		find_max(t_stack *stack);
 int		find_min(t_stack *stack);
+void    initialize_ordered_stack(t_stack *stackA, t_ordered_stack *orderedStack);
+void	ft_sort_int_tab(t_ordered_stack *orderedStack);
+int	    find_first(t_stack *stack, t_ordered_stack *ordered_stack, int chunk_size, int chunk);
+int     find_last(t_stack *stack, t_ordered_stack *ordered_stack, int chunk_size, int chunk);
+int     define_hold_position(t_stack *stack, t_ordered_stack *orderedStack, int chunk, int chunks);
+void    put_hold_top(t_stack *stackA, t_stack *stackB, t_ordered_stack *orderedStack, int chunk_size, int chunks);
+void	push_to_other_stack(t_stack *stackA, t_stack *stackB, t_ordered_stack *orderedStack, int chunks);
+void    push_back_all(t_stack *stackA, t_stack *stackB);
+void    a_hundred_plus_elements(t_stack *stackA, t_stack *stackB, int chunks);
 
 // TESTING
 void print_stack(t_stack *stack);

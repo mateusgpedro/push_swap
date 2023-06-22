@@ -34,48 +34,25 @@
 //	}
 //}
 
-void	push_from_a(t_stack *stackA, t_stack stackB, t_ordered_stack *orderedStack, int chunks)
-{
-	int	i;
-	int is_hold_top;
-
-	i = 0;
-	while (stackA->size > 0)
-	{
-		while (i < chunks)
-		{
-			is_hold_top = define_hold_position(stackA, orderedStack, i, chunks);
-			if (is_hold_top == 1 )
-				rotate(stackA);
-			else if (is_hold_top == 0)
-				reverse_rotate(stackA);
-			else if (is_hold_top == -1)
-				exit(EXIT_FAILURE);
-
-			i++;
-		}
-	}
-}
-
 int	define_hold_position(t_stack *stack, t_ordered_stack *orderedStack, int chunk, int chunks)
 {
 	if (chunk == chunks)
 	{
 		orderedStack->hold_first =
 				find_first(stack, orderedStack, orderedStack->last_chunk_size, chunk);
-		orderedStack->hold_last =
+		orderedStack->hold_second =
 				find_last(stack, orderedStack, orderedStack->last_chunk_size, chunk);
 	}
 	else
 	{
 		orderedStack->hold_first =
 				find_first(stack, orderedStack, orderedStack->chunk_size, chunk);
-		orderedStack->hold_last =
+		orderedStack->hold_second =
 				find_last(stack, orderedStack, orderedStack->chunk_size, chunk);
 	}
-	if (orderedStack->hold_first == -1 && orderedStack->hold_last == -1)
+	if (orderedStack->hold_first == -1 && orderedStack->hold_second == -1)
 		return (-1);
-	if (orderedStack->hold_first <= (100 - orderedStack->hold_last))
+	if (orderedStack->hold_first <= (100 - orderedStack->hold_second)) // if return 0 it means hold first is closer to the top than the second
 		return (1);
 	return (0);
 }
@@ -111,6 +88,7 @@ int	find_last(t_stack *stack, t_ordered_stack *ordered_stack, int chunk_size, in
 	int		j;
 
 	item = stack->head;
+    tmp = 0;
 	i = 0;
 	while (item->next)
 	{
@@ -119,13 +97,31 @@ int	find_last(t_stack *stack, t_ordered_stack *ordered_stack, int chunk_size, in
 		{
 			if (i > stack->size/2 && item->value == ordered_stack->order[j + (chunk_size * chunk)])
 				tmp = i;
-			j++;
+            j++;
 		}
 		i++;
 		item = item->next;
 	}
-	if (i > 0)
-		return (i);
+	if (tmp > 0)
+		return (tmp);
 	else
 		return (-1);
+}
+
+void	push_to_other_stack(t_stack *stackA, t_stack *stackB, t_ordered_stack *orderedStack, int chunks)
+{
+    int	i;
+
+    i = 0;
+    while (stackA->size > 0)
+    {
+        while (i < chunks)
+        {
+            if (i < chunks)
+                put_hold_top(stackA, stackB, orderedStack, orderedStack->chunk_size, chunks);
+            else if (i == chunks)
+                put_hold_top(stackA, stackB, orderedStack, orderedStack->last_chunk_size, chunks);
+            i++;
+        }
+    }
 }
