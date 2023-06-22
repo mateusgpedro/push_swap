@@ -24,17 +24,17 @@ void	three_elemtens(t_stack *stackA)
 	if (el_1 > el_2 && el_2 < el_3 && el_3 > el_1)
 		swap_item(stackA);
 	else if (el_1 > el_2 && el_2 < el_3 && el_3 < el_1)
-		rotate(stackA);
+		rotate(stackA, 1);
 	else if (el_1 < el_2 && el_2 > el_3 && el_3 < el_1)
-		reverse_rotate(stackA);
+		reverse_rotate(stackA, 1);
 	else if (el_1 > el_2 && el_2 > el_3 && el_3 < el_1)
 	{
 		swap_item(stackA);
-		reverse_rotate(stackA);
+		reverse_rotate(stackA, 1);
 	}
 	else if (el_1 < el_2 && el_2 > el_3 && el_3 < el_1)
 	{
 		swap_item(stackA);
-		rotate(stackA);
+		rotate(stackA, 1);
 	}
 }

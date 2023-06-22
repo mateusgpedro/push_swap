@@ -64,6 +64,23 @@ int	check_duplicates(int *values, int value)
 }
 */
 
+void initialize_ordered_stack(t_stack *stackA, t_ordered_stack *orderedStack)
+{
+    t_item * item;
+    int i;
+
+    i = 0;
+    item = stackA->head;
+    orderedStack->order = (int*)malloc(sizeof(int) * stackA->size);
+    while (item->next)
+    {
+        orderedStack->order[i] = item->value;
+        orderedStack->size++;
+        i++;
+        item = item->next;
+    }
+}
+
 void	ft_sort_int_tab(t_ordered_stack *orderedStack)
 {
 	int	i;

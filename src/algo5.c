@@ -28,7 +28,7 @@ void	operation_five(t_stack *stackA, t_stack *stackB)
 			pb(stackA, stackB);
 		else
 		{
-			rotate(stackA);
+			rotate(stackA, 1);
 		}
 	}
 }
@@ -41,14 +41,14 @@ void	five_elements(t_stack *stackA, t_stack * stackB)
 	if (stackB->head->value == find_max(stackB))
 	{
 		pa(stackA, stackB);
-		rotate(stackA);
+		rotate(stackA, 1);
 		pa(stackA, stackB);
 	}
 	else
 	{
-		rotate(stackB);
+		rotate(stackB, 1);
 		pa(stackA, stackB);
-		rotate(stackA);
+		rotate(stackA, 1);
 		pa(stackA, stackB);
 	}
 }
