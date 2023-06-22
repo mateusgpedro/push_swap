@@ -12,33 +12,42 @@
 
 #include "../includes/push_swap.h"
 
-void	reverse_rotate(t_stack *stack)
+void	reverse_rotate(t_stack *stack, int times)
 {
 	t_item	*tmp;
+    int i;
 
-	tmp = stack->head;
-	while (tmp->next->next)
-	{
-		tmp = tmp->next;
-	}
-	push(stack, tmp->next);
-	tmp->next = NULL;
+    i = 0;
+    while (i < times)
+    {
+        tmp = stack->head;
+        while (tmp->next->next)
+            tmp = tmp->next;
+        push(stack, tmp->next);
+        tmp->next = NULL;
+        i++;
+    }
 }
 
-void	rotate(t_stack *stack)
+void	rotate(t_stack *stack, int times)
 {
 	t_item	*tmp;
 	t_item	*item;
+    int i;
 
-	tmp = stack->head;
-	item = stack->head;
-	stack->head = stack->head->next;
-	while (tmp->next)
-	{
-		tmp = tmp->next;
-	}
-	tmp->next = item;
-	item->next = NULL;
+    i = 0;
+    while (i < times)
+    {
+        tmp = stack->head;
+        item = stack->head;
+        stack->head = stack->head->next;
+        while (tmp->next)
+            tmp = tmp->next;
+        tmp->next = item;
+        item->next = NULL;
+        i++;
+    }
+
 }
 
 void pa(t_stack *stackA, t_stack *stackB)

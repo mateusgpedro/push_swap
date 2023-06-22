@@ -1,6 +1,6 @@
 NAME = push_swap.a
 
-CC = cc -g
+CC = gcc -g
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 
@@ -13,9 +13,13 @@ SRCS = 	src/algo.c \
 		src/rules.c \
 		src/utils.c \
 		src/utils2.c \
+		src/utils3.c \
 		src/algo2.c \
 		src/algo3.c \
 		src/algo5.c \
+		src/algo_100.c \
+		src/algo_diff.c \
+		src/algo_diff2.c \
 
 OBJS = $(SRCS:%.c=%.o)
 

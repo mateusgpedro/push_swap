@@ -23,5 +23,8 @@ void start_algorithm(t_stack *stackA)
 		three_elemtens(stackA); // Done
 	else if (stackA->size == 5)
 		five_elements(stackA, stackB);
-
+    else if (stackA->size >= 500)
+        a_hundred_plus_elements(stackA, stackB, 11);
+    else
+        a_hundred_plus_elements(stackA, stackB, 5);
 }
