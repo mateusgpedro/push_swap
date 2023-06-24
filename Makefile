@@ -1,6 +1,6 @@
 NAME = push_swap.a
 
-CC = gcc -g
+CC = cc -g
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 

@@ -38,7 +38,8 @@ typedef struct s_ordered_stack
     int chunk_size;
 	int hold_first;
 	int hold_second;
-
+    int chunks;
+    int current_chunk;
 }				t_ordered_stack;
 
 //PROGRAM
@@ -64,13 +65,14 @@ int		find_max(t_stack *stack);
 int		find_min(t_stack *stack);
 void    initialize_ordered_stack(t_stack *stackA, t_ordered_stack *orderedStack);
 void	ft_sort_int_tab(t_ordered_stack *orderedStack);
-int	    find_first(t_stack *stack, t_ordered_stack *ordered_stack, int chunk_size, int chunk);
-int     find_last(t_stack *stack, t_ordered_stack *ordered_stack, int chunk_size, int chunk);
-int     define_hold_position(t_stack *stack, t_ordered_stack *orderedStack, int chunk, int chunks);
-void    put_hold_top(t_stack *stackA, t_stack *stackB, t_ordered_stack *orderedStack, int chunk_size, int chunks);
-void	push_to_other_stack(t_stack *stackA, t_stack *stackB, t_ordered_stack *orderedStack, int chunks);
+int	    find_first(t_stack *stack, t_ordered_stack *ordered_stack);
+int		find_last(t_stack *stack, t_ordered_stack *ordered_stack);
+int	define_hold_position(t_stack *stack, t_ordered_stack *orderedStack);
+void    put_hold_top(t_stack *stackA, t_stack *stackB, t_ordered_stack *orderedStack, int isLast);
+void	push_to_other_stack(t_stack *stackA, t_stack *stackB, t_ordered_stack *orderedStack);
 void    push_back_all(t_stack *stackA, t_stack *stackB);
 void    a_hundred_plus_elements(t_stack *stackA, t_stack *stackB, int chunks);
+int     is_in_chunk(t_item *item, t_ordered_stack *orderedStack);
 
 // TESTING
 void print_stack(t_stack *stack);

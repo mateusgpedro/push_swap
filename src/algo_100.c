@@ -11,6 +11,9 @@ void a_hundred_plus_elements(t_stack *stackA, t_stack *stackB, int chunks)
 	orderedStack->last_chunk_size = stackA->size % chunks;
 	if (stackA->size % orderedStack->chunk_size != 0)
 		chunks++;
+    orderedStack->chunks = chunks;
+    orderedStack->current_chunk = 0;
     push_to_other_stack(stackA, stackB, orderedStack, chunks);
+    print_stack(stackB);
     push_back_all(stackA, stackB);
 }
