@@ -52,32 +52,33 @@ int	define_hold_position(t_stack *stack, t_ordered_stack *orderedStack, int chun
 	}
 	if (orderedStack->hold_first == -1 && orderedStack->hold_second == -1)
 		return (-1);
-	if (orderedStack->hold_first <= (100 - orderedStack->hold_second)) // if return 0 it means hold first is closer to the top than the second
+	if (orderedStack->hold_first <= (stack->size - orderedStack->hold_second)
+        && orderedStack->hold_first != -1) // if return 0 it means hold first is closer to the top than the second
 		return (1);
 	return (0);
 }
 
 int	find_first(t_stack *stack, t_ordered_stack *ordered_stack, int chunk_size, int chunk)
 {
-	t_item	*item;
-	int		i;
-	int 	j;
+    t_item	*item;
+    int		i;
+    int 	j;
 
-	item = stack->head;
-	i = 0;
-	while (item->next && i < stack->size / 2)
-	{
-		j = 0;
-		while (j < chunk_size)
-		{
-			if (item->value == ordered_stack->order[j + (chunk_size * chunk)])
-				return i;
-			j++;
-		}
-		i++;
-		item = item->next;
-	}
-	return (-1);
+    item = stack->head;
+    i = 0;
+    while (item && i < stack->size / 2)
+    {
+        j = 0;
+        while (j < chunk_size)
+        {
+            if (item->value == ordered_stack->order[j + (chunk_size * chunk)])
+                return i;
+            j++;
+        }
+        i++;
+        item = item->next;
+    }
+    return (-1);
 }
 
 int	find_last(t_stack *stack, t_ordered_stack *ordered_stack, int chunk_size, int chunk)
@@ -113,15 +114,13 @@ void	push_to_other_stack(t_stack *stackA, t_stack *stackB, t_ordered_stack *orde
     int	i;
 
     i = 0;
+    //ft_printf("%d\n", chunks);
     while (stackA->size > 0)
     {
-        while (i < chunks)
-        {
-            if (i < chunks)
-                put_hold_top(stackA, stackB, orderedStack, orderedStack->chunk_size, chunks);
-            else if (i == chunks)
-                put_hold_top(stackA, stackB, orderedStack, orderedStack->last_chunk_size, chunks);
-            i++;
-        }
+        if (i < chunks)
+            put_hold_top(stackA, stackB, orderedStack, orderedStack->chunk_size, chunks);
+        else if (i == chunks)
+            put_hold_top(stackA, stackB, orderedStack, orderedStack->last_chunk_size, chunks);
+        i++;
     }
 }

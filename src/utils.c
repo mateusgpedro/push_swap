@@ -72,7 +72,8 @@ void initialize_ordered_stack(t_stack *stackA, t_ordered_stack *orderedStack)
     i = 0;
     item = stackA->head;
     orderedStack->order = (int*)malloc(sizeof(int) * stackA->size);
-    while (item->next)
+    orderedStack->size = 0;
+    while (item)
     {
         orderedStack->order[i] = item->value;
         orderedStack->size++;
@@ -91,7 +92,7 @@ void	ft_sort_int_tab(t_ordered_stack *orderedStack)
 	while (i < orderedStack->size)
 	{
 		j = 0;
-		while (j < orderedStack->size)
+		while (j < orderedStack->size - 1)
 		{
 			if (orderedStack->order[j] > orderedStack->order[j + 1])
 			{

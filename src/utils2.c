@@ -30,15 +30,15 @@ t_item	*first(t_stack *stack, int index)
 void print_stack(t_stack *stack)
 {
 	t_item * item;
-	int i;
 
-	i = 0;
 	item = stack->head;
-	while (i < stack->size && item)
+	while (item)
 	{
-		ft_printf("%d\n", item->value);
+		ft_printf("%d ", item->value);
 		item = item->next;
 	}
+    ft_printf("\n");
+
 }
 
 int find_max(t_stack *stack)

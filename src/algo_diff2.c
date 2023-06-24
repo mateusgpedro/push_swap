@@ -9,12 +9,15 @@ void put_hold_top(t_stack *stackA, t_stack *stackB, t_ordered_stack *orderedStac
     while (i < chunk_size)
     {
         is_hold_top = define_hold_position(stackA, orderedStack, i, chunks);
-        if (is_hold_top == 1)
+        if (is_hold_top == 1 && stackA->size != 1)
             rotate(stackA, orderedStack->hold_first);
-        else if (is_hold_top == 0)
+        else if (is_hold_top == 0 && stackA->size != 1)
             reverse_rotate(stackA, stackA->size - orderedStack->hold_second);
-        else if (is_hold_top == -1)
-            exit(EXIT_FAILURE);
+        /*else if (is_hold_top == -1)
+        {
+            ft_printf("Error on put_hold");
+            return ;
+        }*/
         pb(stackA, stackB);
         i++;
     }

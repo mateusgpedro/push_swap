@@ -23,7 +23,7 @@ void	reverse_rotate(t_stack *stack, int times)
         tmp = stack->head;
         while (tmp->next->next)
             tmp = tmp->next;
-        push(stack, tmp->next);
+        push(stack, tmp->next, 0);
         tmp->next = NULL;
         i++;
     }
@@ -59,7 +59,7 @@ void pa(t_stack *stackA, t_stack *stackB)
 	item = stackB->head;
 	stackB->head = stackB->head->next;
 	stackB->size--;
-	push(stackA, item);
+	push(stackA, item, 1);
 }
 
 void pb(t_stack *stackA, t_stack *stackB)
@@ -71,7 +71,7 @@ void pb(t_stack *stackA, t_stack *stackB)
 		item = stackA->head;
 		stackA->head = stackA->head->next;
 		stackA->size--;
-		push(stackB, item);
+		push(stackB, item, 1);
 }
 
 void swap_item(t_stack *stack)

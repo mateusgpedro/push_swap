@@ -44,7 +44,7 @@ typedef struct s_ordered_stack
 //PROGRAM
 void	init_with_split(t_stack *stack, char *str);
 void	init_with_args(t_stack *stack, char **strs, int size);
-void	push(t_stack *stack, t_item *item);
+void	push(t_stack *stack, t_item *item, int increaseSize);
 void	swap(int *a, int *b);
 void	init_stack(int *values, t_stack *stack, int size);
 t_item	*create_new_item(int val);

@@ -89,7 +89,7 @@ void	init_stack(int *values, t_stack *stack, int size)
 	while (i < size)
 	{
 		item = create_new_item(values[i]);
-		push(stack, item);
+		push(stack, item, 1);
 		i++;
 	}
 }

@@ -12,20 +12,20 @@
 
 #include "../includes/push_swap.h"
 
-void	push(t_stack *stack, t_item *item)
+void	push(t_stack *stack, t_item *item, int increaseSize)
 {
 	if (stack->size == 0)
 	{
 		stack->head = item;
 		item->next = NULL;
-		stack->size++;
 	}
 	else
 	{
 		item->next = stack->head;
 		stack->head = item;
-		stack->size++;
 	}
+    if (increaseSize == 1)
+        stack->size++;
 }
 
 t_item	*create_new_item(int val)
