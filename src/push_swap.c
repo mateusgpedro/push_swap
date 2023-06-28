@@ -50,6 +50,7 @@ int	main(int argc, char *argv[])
 		init_with_args(stackA, argv, argc - 1);
 	else
 		ft_printf("ERROR");
+	//print_stack(stackA);
 	start_algorithm(stackA);
-	print_stack(stackA);
+	//print_stack(stackA);
 }

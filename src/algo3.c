@@ -12,7 +12,7 @@
 
 #include "../includes/push_swap.h"
 
-void	three_elemtens(t_stack *stackA)
+void	three_elements(t_stack *stackA)
 {
 	int el_1;
 	int el_2;
@@ -22,19 +22,19 @@ void	three_elemtens(t_stack *stackA)
 	el_2 = first(stackA, 1)->value;
 	el_3 = first(stackA, 2)->value;
 	if (el_1 > el_2 && el_2 < el_3 && el_3 > el_1)
-		swap_item(stackA);
+		swap_item(stackA, STACK_A);
 	else if (el_1 > el_2 && el_2 < el_3 && el_3 < el_1)
-		rotate(stackA, 1);
+		rotate(stackA, 1, STACK_A);
 	else if (el_1 < el_2 && el_2 > el_3 && el_3 < el_1)
-		reverse_rotate(stackA, 1);
+		reverse_rotate(stackA, 1, STACK_A);
 	else if (el_1 > el_2 && el_2 > el_3 && el_3 < el_1)
 	{
-		swap_item(stackA);
-		reverse_rotate(stackA, 1);
+		swap_item(stackA, STACK_A);
+		reverse_rotate(stackA, 1, STACK_A);
 	}
 	else if (el_1 < el_2 && el_2 > el_3 && el_3 < el_1)
 	{
-		swap_item(stackA);
-		rotate(stackA, 1);
+		swap_item(stackA, STACK_A);
+		rotate(stackA, 1, STACK_A);
 	}
 }

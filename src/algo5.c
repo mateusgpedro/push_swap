@@ -19,36 +19,30 @@ void	operation_five(t_stack *stackA, t_stack *stackB)
 	int	max;
 	t_item *tmp;
 
-	min = find_min(stackA);
-	max = find_max(stackA);
+	min = find_min_val(stackA);
+	max = find_max_val(stackA);
 	while (stackA->size != 3)
 	{
 		tmp = stackA->head;
 		if (tmp->value == max || tmp->value == min)
 			pb(stackA, stackB);
 		else
-		{
-			rotate(stackA, 1);
-		}
+			rotate(stackA, 1, STACK_A);
 	}
 }
 
 void	five_elements(t_stack *stackA, t_stack * stackB)
 {
 	operation_five(stackA, stackB);
-	three_elemtens(stackA);
+	three_elements(stackA);
+	pa(stackA, stackB);
+	pa(stackA, stackB);
 
-	if (stackB->head->value == find_max(stackB))
-	{
-		pa(stackA, stackB);
-		rotate(stackA, 1);
-		pa(stackA, stackB);
-	}
+	if (stackA->head->value == find_max_val(stackA))
+		rotate(stackA, 1, STACK_A);
 	else
 	{
-		rotate(stackB, 1);
-		pa(stackA, stackB);
-		rotate(stackA, 1);
-		pa(stackA, stackB);
+		swap_item(stackA, STACK_A);
+		rotate(stackA, 1, STACK_A);
 	}
 }

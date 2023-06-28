@@ -28,20 +28,18 @@ int	define_hold_position(t_stack *stack, t_ordered_stack *orderedStack)
 int	find_first(t_stack *stack, t_ordered_stack *ordered_stack)
 {
     t_item	*item;
-    int		i;
     int		is_item_in_chunk;
 
     item = stack->head;
-    i = 0;
-    while (item && i < stack->size / 2)
+    while (item && find_index(stack, item) < stack->size / 2)
     {
         is_item_in_chunk = is_in_chunk(item, ordered_stack);
         if (is_item_in_chunk)
 		{
-			ft_printf("first: %d\n", item->value);
-			return i;
+			//ft_printf("first: %d\n", item->value);
+			return (find_index(stack, item));
 		}
-        item = item->next;
+		item = item->next;
     }
     return (-1);
 }
@@ -65,7 +63,7 @@ int	find_last(t_stack *stack, t_ordered_stack *ordered_stack)
 		i++;
 		item = item->next;
 	}
-	ft_printf("last: %d\n", item->value);
+	//ft_printf("last: %d\n", item->value);
 
 	if (tmp > 0)
 		return (tmp);

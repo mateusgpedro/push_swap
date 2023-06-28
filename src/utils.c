@@ -37,7 +37,7 @@ int	ft_atol(const char *str, int *value)
 	while (*str)
 	{
 		if (*str >= '0' && *str <= '9')
-			l_str = l_str * 10 + (*str - '0');
+			l_str = (l_str * 10) + (*str - '0');
 		else
 			return (0);
 		str++;

@@ -20,7 +20,7 @@ void start_algorithm(t_stack *stackA)
 	if (stackA->size == 2)
 		two_elements(stackA); // Done
 	else if (stackA->size == 3)
-		three_elemtens(stackA); // Done
+		three_elements(stackA); // Done
 	else if (stackA->size == 5)
 		five_elements(stackA, stackB);
     else if (stackA->size >= 500)

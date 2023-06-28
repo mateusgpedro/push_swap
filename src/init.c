@@ -60,8 +60,8 @@ void	init_with_args(t_stack *stack, char **strs, int size)
 	while (strs[i + 1] != NULL)
 	{
 		res = 0;
-		if (ft_atol(strs[i + 1], &values[i]) == 1 )
-			res = 1;
+//		if (ft_atol(strs[i + 1], &values[i]) == 1)
+		res = ft_atol(strs[i + 1], &values[i]);
 		if (res == 0)
 		{
 			ft_printf("ERROR");
@@ -81,21 +81,15 @@ void	init_with_args(t_stack *stack, char **strs, int size)
 
 void	init_stack(int *values, t_stack *stack, int size)
 {
-	int		i;
 	t_item	*item;
 
-	i = 0;
-
-	while (i < size)
+	while (0 < size)
 	{
-		item = create_new_item(values[i]);
+		item = create_new_item(values[size - 1]);
 		push(stack, item, 1);
-		i++;
+		size--;
 	}
 }
-
-
-
 /*
 	WHAT DEFINES AN INVALID INPUT?
 

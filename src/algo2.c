@@ -18,5 +18,5 @@ void	two_elements(t_stack *stackA)
 
 	item = stackA->head;
 	if (item->value > item->next->value)
-		swap_item(stackA);
+		swap_item(stackA, STACK_A);
 }

@@ -13,10 +13,13 @@
 #ifndef PUSH_SWAP_H
 #define PUSH_SWAP_H
 
-#include <limits.h>
+# include <limits.h>
 #include <stdlib.h>
 #include "../libft/libft.h"
 #include "ft_printf.h"
+
+# define STACK_A 0
+# define STACK_B 1
 
 typedef struct s_item
 {
@@ -51,28 +54,31 @@ void	init_stack(int *values, t_stack *stack, int size);
 t_item	*create_new_item(int val);
 void	free_strs(char **strs);
 int		ft_atol(const char *str, int *value);
-void	rotate(t_stack *stack, int times);
-void	reverse_rotate(t_stack *stack, int times);
+void	rotate(t_stack *stack, int times, int what_stack);
+void	reverse_rotate(t_stack *stack, int times, int what_stack);
 void	pa(t_stack *stackA, t_stack *stackB);
 void	pb(t_stack *stackA, t_stack *stackB);
-void	swap_item(t_stack *stack);
+void swap_item(t_stack *stack, int what_stack);
 void	start_algorithm(t_stack *stackA);
 void	two_elements(t_stack *stackA);
-void	three_elemtens(t_stack *stackA);
+void	three_elements(t_stack *stackA);
 void	five_elements(t_stack *stackA, t_stack * stackB);
 t_item	*first(t_stack *stack, int index);
-int		find_max(t_stack *stack);
-int		find_min(t_stack *stack);
+int		find_max_val(t_stack *stack);
+int		find_min_val(t_stack *stack);
 void    initialize_ordered_stack(t_stack *stackA, t_ordered_stack *orderedStack);
 void	ft_sort_int_tab(t_ordered_stack *orderedStack);
 int	    find_first(t_stack *stack, t_ordered_stack *ordered_stack);
 int		find_last(t_stack *stack, t_ordered_stack *ordered_stack);
-int	define_hold_position(t_stack *stack, t_ordered_stack *orderedStack);
+int		define_hold_position(t_stack *stack, t_ordered_stack *orderedStack);
 void    put_hold_top(t_stack *stackA, t_stack *stackB, t_ordered_stack *orderedStack, int isLast);
 void	push_to_other_stack(t_stack *stackA, t_stack *stackB, t_ordered_stack *orderedStack);
 void    push_back_all(t_stack *stackA, t_stack *stackB);
 void    a_hundred_plus_elements(t_stack *stackA, t_stack *stackB, int chunks);
 int     is_in_chunk(t_item *item, t_ordered_stack *orderedStack);
+int		find_index(t_stack *stack, t_item *item);
+t_item	*find_max(t_stack *stack);
+t_item	*find_min(t_stack *stack);
 
 // TESTING
 void print_stack(t_stack *stack);
