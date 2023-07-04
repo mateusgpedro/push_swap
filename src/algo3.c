@@ -12,29 +12,29 @@
 
 #include "../includes/push_swap.h"
 
-void	three_elements(t_stack *stackA)
+void	three_elements(t_stack *stack_a)
 {
-	int el_1;
-	int el_2;
-	int el_3;
+	int	el_1;
+	int	el_2;
+	int	el_3;
 
-	el_1 = first(stackA, 0)->value;
-	el_2 = first(stackA, 1)->value;
-	el_3 = first(stackA, 2)->value;
+	el_1 = first_val(stack_a, 0);
+	el_2 = first_val(stack_a, 1);
+	el_3 = first_val(stack_a, 2);
 	if (el_1 > el_2 && el_2 < el_3 && el_3 > el_1)
-		swap_item(stackA, STACK_A);
+		swap_item(stack_a, STACK_A);
 	else if (el_1 > el_2 && el_2 < el_3 && el_3 < el_1)
-		rotate(stackA, 1, STACK_A);
+		rotate(stack_a, 1, STACK_A);
 	else if (el_1 < el_2 && el_2 > el_3 && el_3 < el_1)
-		reverse_rotate(stackA, 1, STACK_A);
+		reverse_rotate(stack_a, 1, STACK_A);
 	else if (el_1 > el_2 && el_2 > el_3 && el_3 < el_1)
 	{
-		swap_item(stackA, STACK_A);
-		reverse_rotate(stackA, 1, STACK_A);
+		swap_item(stack_a, STACK_A);
+		reverse_rotate(stack_a, 1, STACK_A);
 	}
-	else if (el_1 < el_2 && el_2 > el_3 && el_3 < el_1)
+	else if (el_1 < el_2 && el_2 > el_3 && el_3 > el_1)
 	{
-		swap_item(stackA, STACK_A);
-		rotate(stackA, 1, STACK_A);
+		swap_item(stack_a, STACK_A);
+		rotate(stack_a, 1, STACK_A);
 	}
 }

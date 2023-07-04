@@ -12,19 +12,20 @@
 
 #include "../includes/push_swap.h"
 
-void start_algorithm(t_stack *stackA)
+void	start_algorithm(t_stack *stack_a)
 {
-	t_stack *stackB;
+	t_stack	*stack_b;
 
-	stackB = ft_calloc(1, sizeof(t_stack *));
-	if (stackA->size == 2)
-		two_elements(stackA); // Done
-	else if (stackA->size == 3)
-		three_elements(stackA); // Done
-	else if (stackA->size == 5)
-		five_elements(stackA, stackB);
-    else if (stackA->size >= 500)
-        a_hundred_plus_elements(stackA, stackB, 11);
-    else
-        a_hundred_plus_elements(stackA, stackB, 5);
+	stack_b = ft_calloc(1, sizeof(t_stack));
+	if (stack_a->size == 2)
+		two_elements(stack_a);
+	else if (stack_a->size == 3)
+		three_elements(stack_a);
+	else if (stack_a->size == 5)
+		five_elements(stack_a, stack_b);
+	else if (stack_a->size >= 500)
+		a_hundred_plus_elements(stack_a, stack_b, 11);
+	else
+		a_hundred_plus_elements(stack_a, stack_b, 5);
+	free(stack_b);
 }

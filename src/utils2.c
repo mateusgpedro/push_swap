@@ -12,7 +12,7 @@
 
 #include "../includes/push_swap.h"
 
-t_item	*first(t_stack *stack, int index)
+int	first_val(t_stack *stack, int index)
 {
 	t_item	*item;
 	int		i;
@@ -24,27 +24,13 @@ t_item	*first(t_stack *stack, int index)
 		item = item->next;
 		i++;
 	}
-	return (item);
-}
-
-void	print_stack(t_stack *stack)
-{
-	t_item * item;
-
-	item = stack->head;
-	while (item)
-	{
-		ft_printf("%d ", item->value);
-		item = item->next;
-	}
-    ft_printf("\n");
-
+	return (item->value);
 }
 
 int	find_max_val(t_stack *stack)
 {
-	t_item *tmp;
-	t_item *value;
+	t_item	*tmp;
+	t_item	*value;
 
 	tmp = stack->head;
 	value = tmp;
@@ -59,8 +45,8 @@ int	find_max_val(t_stack *stack)
 
 int	find_min_val(t_stack *stack)
 {
-	t_item *tmp;
-	t_item *value;
+	t_item	*tmp;
+	t_item	*value;
 
 	tmp = stack->head;
 	value = stack->head;
@@ -75,17 +61,17 @@ int	find_min_val(t_stack *stack)
 
 int	find_index(t_stack *stack, t_item *item)
 {
-	t_item *tmp;
-	int	i;
+	t_item	*tmp;
+	int		i;
 
 	tmp = stack->head;
 	i = 0;
 	while (tmp->next)
 	{
 		if (tmp->value == item->value)
-			break;
+			break ;
 		i++;
 		tmp = tmp->next;
 	}
-	return i;
+	return (i);
 }

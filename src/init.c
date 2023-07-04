@@ -15,68 +15,43 @@
 void	init_with_split(t_stack *stack, char *str)
 {
 	char	**splitted;
-	int		res;
 	int		*values;
 	int		i;
-	int		size;
-
 
 	splitted = ft_split(str, ' ');
-	size = 0;
-	while(splitted[size] != NULL)
-		size++;
-	values = malloc(sizeof(int) * size);
+	i = 0;
+	while (splitted[i] != NULL)
+		i++;
+	values = malloc(sizeof(int) * i);
 	i = 0;
 	while (splitted[i] != NULL)
 	{
-		res = 0;
-		if (ft_atol(splitted[i], &values[i]) == 1 )
-			res = 1;
-		if (res == 0)
-		{
-			ft_printf("ERROR");
-			free_strs(splitted);
-			return ;
-		}
+		if (ft_atol(splitted[i + 1], &values[i]) == 0)
+			exit_algo(values, stack);
 		i++;
 	}
+	if (check_duplicates(values) == 0)
+		exit_algo(values, stack);
 	init_stack(values, stack, i);
-	/* i = 0;
-	while(values[i] != '\0')
-	{
-		ft_printf("%d\n", values[i]);
-		i++;
-	} */
+	free_strs(splitted);
 }
 
 void	init_with_args(t_stack *stack, char **strs, int size)
 {
-	int	res;
-	int *values;
+	int	*values;
 	int	i;
 
 	i = 0;
 	values = malloc(sizeof(int) * size);
 	while (strs[i + 1] != NULL)
 	{
-		res = 0;
-//		if (ft_atol(strs[i + 1], &values[i]) == 1)
-		res = ft_atol(strs[i + 1], &values[i]);
-		if (res == 0)
-		{
-			ft_printf("ERROR");
-			free(values);
-			return ;
-		}
+		if (ft_atol(strs[i + 1], &values[i]) == 0)
+			exit_algo(values, stack);
 		i++;
 	}
+	if (check_duplicates(values) == 0)
+		exit_algo(values, stack);
 	init_stack(values, stack, i);
-	/* i = 0;
-	 while(values[i] != '\0')
-	{
-		ft_printf("%d\n", values[i]);
-		i++;
-	} */
 }
 
 void	init_stack(int *values, t_stack *stack, int size)
@@ -89,10 +64,31 @@ void	init_stack(int *values, t_stack *stack, int size)
 		push(stack, item, 1);
 		size--;
 	}
+	free(values);
 }
-/*
-	WHAT DEFINES AN INVALID INPUT?
 
-	- DUPLICATES
-	- NON NUMERIC INPUT
-*/
+void	push(t_stack *stack, t_item *item, int increaseSize)
+{
+	if (stack->size == 0)
+	{
+		stack->head = item;
+		item->next = NULL;
+	}
+	else
+	{
+		item->next = stack->head;
+		stack->head = item;
+	}
+	if (increaseSize == 1)
+		stack->size++;
+}
+
+t_item	*create_new_item(int val)
+{
+	t_item	*item;
+
+	item = malloc(sizeof(t_item));
+	item->next = NULL;
+	item->value = val;
+	return (item);
+}

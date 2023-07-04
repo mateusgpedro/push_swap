@@ -12,9 +12,9 @@
 
 #include "../includes/push_swap.h"
 
-void swap(int *a, int *b)
+void	swap(int *a, int *b)
 {
-	int tmp;
+	int	tmp;
 
 	tmp = *a;
 	*a = *b;
@@ -23,8 +23,8 @@ void swap(int *a, int *b)
 
 int	ft_atol(const char *str, int *value)
 {
-	int	sign;
-	long long l_str;
+	int			sign;
+	long long	l_str;
 
 	sign = 1;
 	l_str = 0;
@@ -48,57 +48,45 @@ int	ft_atol(const char *str, int *value)
 	*value = l_str;
 	return (1);
 }
-/*
-int	check_duplicates(int *values, int value)
+
+void	initialize_ordered_stack(t_stack *stack_a,
+			t_ordered_stack *ordered_stack)
 {
-	int	i;
+	t_item	*item;
+	int		i;
 
 	i = 0;
-	while (values[i] != '\0')
+	item = stack_a->head;
+	ordered_stack->order = NULL;
+	ordered_stack->order = malloc(sizeof(int) * stack_a->size);
+
+	ordered_stack->size = 0;
+	while (item)
 	{
-		if (values[i] == value)
-			return (0);
+		ordered_stack->order[i] = item->value;
+		ordered_stack->size++;
 		i++;
+		item = item->next;
 	}
-	return (1);
-}
-*/
-
-void initialize_ordered_stack(t_stack *stackA, t_ordered_stack *orderedStack)
-{
-    t_item * item;
-    int i;
-
-    i = 0;
-    item = stackA->head;
-    orderedStack->order = (int*)malloc(sizeof(int) * stackA->size);
-    orderedStack->size = 0;
-    while (item)
-    {
-        orderedStack->order[i] = item->value;
-        orderedStack->size++;
-        i++;
-        item = item->next;
-    }
 }
 
-void	ft_sort_int_tab(t_ordered_stack *orderedStack)
+void	ft_sort_int_tab(t_ordered_stack *ordered_stack)
 {
 	int	i;
 	int	j;
 	int	temp;
 
 	i = 0;
-	while (i < orderedStack->size)
+	while (i < ordered_stack->size)
 	{
 		j = 0;
-		while (j < orderedStack->size - 1)
+		while (j < ordered_stack->size - 1)
 		{
-			if (orderedStack->order[j] > orderedStack->order[j + 1])
+			if (ordered_stack->order[j] > ordered_stack->order[j + 1])
 			{
-				temp = orderedStack->order[j];
-				orderedStack->order[j] = orderedStack->order[j + 1];
-				orderedStack->order[j + 1] = temp;
+				temp = ordered_stack->order[j];
+				ordered_stack->order[j] = ordered_stack->order[j + 1];
+				ordered_stack->order[j + 1] = temp;
 			}
 			j++;
 		}
@@ -106,3 +94,24 @@ void	ft_sort_int_tab(t_ordered_stack *orderedStack)
 	}
 }
 
+int	check_duplicates(int *values)
+{
+	int	tmp;
+	int	i;
+	int	j;
+
+	i = 0;
+	while (values[i])
+	{
+		tmp = values[i];
+		j = i + 1;
+		while (values[j])
+		{
+			if (tmp == values[j])
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}

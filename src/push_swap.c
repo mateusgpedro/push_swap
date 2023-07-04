@@ -12,45 +12,19 @@
 
 #include "../includes/push_swap.h"
 
-void	push(t_stack *stack, t_item *item, int increaseSize)
-{
-	if (stack->size == 0)
-	{
-		stack->head = item;
-		item->next = NULL;
-	}
-	else
-	{
-		item->next = stack->head;
-		stack->head = item;
-	}
-    if (increaseSize == 1)
-        stack->size++;
-}
-
-t_item	*create_new_item(int val)
-{
-	t_item *item;
-
-	item = malloc(sizeof(t_item));
-	item->next = NULL;
-	item->value = val;
-	return (item);
-}
-
 int	main(int argc, char *argv[])
 {
-	t_stack	*stackA;
+	t_stack	*stack_a;
 
-	stackA = ft_calloc(1, sizeof(t_stack *));
-	stackA->size = 0;
+	stack_a = ft_calloc(1, sizeof(t_stack));
+	stack_a->size = 0;
 	if (argc == 2)
-		init_with_split(stackA, argv[1]);
+		init_with_split(stack_a, argv[1]);
 	else if (argc >= 3)
-		init_with_args(stackA, argv, argc - 1);
+		init_with_args(stack_a, argv, argc - 1);
 	else
-		ft_printf("ERROR");
-	//print_stack(stackA);
-	start_algorithm(stackA);
-	//print_stack(stackA);
+		ft_printf("ERROR\n");
+	start_algorithm(stack_a);
+	free_stack(stack_a);
+	return (0);
 }
