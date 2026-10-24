@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   frees.c                                            :+:      :+:    :+:   */
+/*   stack_free.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maguimar <maguimar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 17:07:44 by maguimar          #+#    #+#             */
-/*   Updated: 2023/02/23 13:04:22 by maguimar         ###   ########.fr       */
+/*   Updated: 2023/07/04 12:16:06 by maguimar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 void	free_strs(char **strs)
 {
@@ -48,4 +48,14 @@ void	free_ordered(t_ordered_stack *ordered)
 	}
 	free(ordered->order);
 	free(ordered);
+}
+
+void	exit_algo(int *values, t_stack *stack)
+{
+	ft_printf("ERROR\n");
+	if (values)
+		free(values);
+	if (stack)
+		free_stack(stack);
+	exit(EXIT_FAILURE);
 }

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   stack_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maguimar <maguimar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 13:48:38 by maguimar          #+#    #+#             */
-/*   Updated: 2023/04/06 13:57:54 by maguimar         ###   ########.fr       */
+/*   Updated: 2023/07/04 12:16:06 by maguimar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 void	init_with_split(t_stack *stack, char *str)
 {
@@ -20,20 +20,29 @@ void	init_with_split(t_stack *stack, char *str)
 
 	splitted = ft_split(str, ' ');
 	i = 0;
-	while (splitted[i] != NULL)
+	while (splitted && splitted[i] != NULL)
 		i++;
+	if (!splitted || i == 0)
+	{
+		if (splitted)
+			free_strs(splitted);
+		exit_algo(NULL, stack);
+	}
 	values = malloc(sizeof(int) * i);
 	i = 0;
 	while (splitted[i] != NULL)
 	{
-		if (ft_atol(splitted[i + 1], &values[i]) == 0)
+		if (ft_atol(splitted[i], &values[i]) == 0)
+		{
+			free_strs(splitted);
 			exit_algo(values, stack);
+		}
 		i++;
 	}
-	if (check_duplicates(values) == 0)
+	free_strs(splitted);
+	if (check_duplicates(values, i) == 0)
 		exit_algo(values, stack);
 	init_stack(values, stack, i);
-	free_strs(splitted);
 }
 
 void	init_with_args(t_stack *stack, char **strs, int size)
@@ -49,7 +58,7 @@ void	init_with_args(t_stack *stack, char **strs, int size)
 			exit_algo(values, stack);
 		i++;
 	}
-	if (check_duplicates(values) == 0)
+	if (check_duplicates(values, i) == 0)
 		exit_algo(values, stack);
 	init_stack(values, stack, i);
 }
@@ -67,7 +76,7 @@ void	init_stack(int *values, t_stack *stack, int size)
 	free(values);
 }
 
-void	push(t_stack *stack, t_item *item, int increaseSize)
+void	push(t_stack *stack, t_item *item, int increase_size)
 {
 	if (stack->size == 0)
 	{
@@ -79,7 +88,7 @@ void	push(t_stack *stack, t_item *item, int increaseSize)
 		item->next = stack->head;
 		stack->head = item;
 	}
-	if (increaseSize == 1)
+	if (increase_size == 1)
 		stack->size++;
 }
 

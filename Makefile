@@ -1,42 +1,61 @@
-NAME = push_swap.a
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: maguimar <maguimar@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/02/06 13:04:59 by maguimar          #+#    #+#              #
+#    Updated: 2023/07/04 12:16:06 by maguimar         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-CC = cc -g
-CFLAGS = -Wall -Wextra -Werror
-RM = rm -rf
+NAME		= push_swap
 
-LIBFT = ./libft/libft.a
+CC			= cc
+CFLAGS		= -Wall -Wextra -Werror -g
+INCLUDES	= -Iincludes -Ilibft
+RM			= rm -rf
 
-SRCS = 	src/algo.c \
-		src/frees.c \
-		src/init.c \
-		src/push_swap.c \
-		src/rules.c \
-		src/utils.c \
-		src/utils2.c \
-		src/utils3.c \
-		src/algo2.c \
-		src/algo3.c \
-		src/algo5.c \
-		src/algo_100.c \
-		src/algo_diff.c \
-		src/algo_diff2.c \
+LIBFT_DIR	= ./libft
+LIBFT		= $(LIBFT_DIR)/libft.a
 
-OBJS = $(SRCS:%.c=%.o)
+SRC_DIR		= src
+OBJ_DIR		= obj
+
+SRCS		= $(SRC_DIR)/main.c \
+			  $(SRC_DIR)/stack/stack_init.c \
+			  $(SRC_DIR)/stack/stack_operations.c \
+			  $(SRC_DIR)/stack/stack_utils.c \
+			  $(SRC_DIR)/stack/stack_free.c \
+			  $(SRC_DIR)/sorting/sort_dispatch.c \
+			  $(SRC_DIR)/sorting/sort_small.c \
+			  $(SRC_DIR)/sorting/sort_chunks.c \
+			  $(SRC_DIR)/sorting/chunk_utils.c \
+			  $(SRC_DIR)/utils/parse_utils.c
+
+OBJS		= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 all: $(NAME)
 
 $(LIBFT):
-	@$(MAKE) -C ./libft
+	@$(MAKE) -C $(LIBFT_DIR)
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c includes/push_swap.h
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(NAME): $(OBJS) $(LIBFT)
-	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o push_swap
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 
 clean:
-	@$(MAKE) clean -C ./libft
-	@$(RM) $(OBJS)
+	@$(MAKE) clean -C $(LIBFT_DIR)
+	@$(RM) $(OBJ_DIR)
 
 fclean: clean
-	@$(MAKE) fclean -C ./libft
-	@$(RM) $(NAME) push_swap
+	@$(MAKE) fclean -C $(LIBFT_DIR)
+	@$(RM) $(NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean re

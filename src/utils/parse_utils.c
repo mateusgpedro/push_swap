@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maguimar <maguimar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 14:47:23 by maguimar          #+#    #+#             */
-/*   Updated: 2023/04/06 13:50:33 by maguimar         ###   ########.fr       */
+/*   Updated: 2023/07/04 12:16:06 by maguimar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 void	swap(int *a, int *b)
 {
@@ -34,6 +34,8 @@ int	ft_atol(const char *str, int *value)
 			sign *= -1;
 		str++;
 	}
+	if (!*str)
+		return (0);
 	while (*str)
 	{
 		if (*str >= '0' && *str <= '9')
@@ -49,69 +51,43 @@ int	ft_atol(const char *str, int *value)
 	return (1);
 }
 
-void	initialize_ordered_stack(t_stack *stack_a,
-			t_ordered_stack *ordered_stack)
-{
-	t_item	*item;
-	int		i;
-
-	i = 0;
-	item = stack_a->head;
-	ordered_stack->order = NULL;
-	ordered_stack->order = malloc(sizeof(int) * stack_a->size);
-
-	ordered_stack->size = 0;
-	while (item)
-	{
-		ordered_stack->order[i] = item->value;
-		ordered_stack->size++;
-		i++;
-		item = item->next;
-	}
-}
-
-void	ft_sort_int_tab(t_ordered_stack *ordered_stack)
+int	check_duplicates(int *values, int size)
 {
 	int	i;
 	int	j;
-	int	temp;
 
 	i = 0;
-	while (i < ordered_stack->size)
+	while (i < size)
 	{
-		j = 0;
-		while (j < ordered_stack->size - 1)
-		{
-			if (ordered_stack->order[j] > ordered_stack->order[j + 1])
-			{
-				temp = ordered_stack->order[j];
-				ordered_stack->order[j] = ordered_stack->order[j + 1];
-				ordered_stack->order[j + 1] = temp;
-			}
-			j++;
-		}
-		i++;
-	}
-}
-
-int	check_duplicates(int *values)
-{
-	int	tmp;
-	int	i;
-	int	j;
-
-	i = 0;
-	while (values[i])
-	{
-		tmp = values[i];
 		j = i + 1;
-		while (values[j])
+		while (j < size)
 		{
-			if (tmp == values[j])
+			if (values[i] == values[j])
 				return (0);
 			j++;
 		}
 		i++;
 	}
 	return (1);
+}
+
+int	is_in_subchunk(t_item *item, t_ordered_stack *ordered_stack)
+{
+	int	i;
+	int	chunk_size;
+
+	i = 0;
+	if (ordered_stack->current_chunk == ordered_stack->chunks)
+		chunk_size = ordered_stack->last_chunk_size;
+	else
+		chunk_size = ordered_stack->chunk_size;
+	while (i < chunk_size / 2)
+	{
+		if (item->value == ordered_stack->order[i
+				+ (ordered_stack->chunk_size
+					* ordered_stack->current_chunk - 1)])
+			return (1);
+		i++;
+	}
+	return (0);
 }

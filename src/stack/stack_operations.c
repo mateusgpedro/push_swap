@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rules.c                                            :+:      :+:    :+:   */
+/*   stack_operations.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maguimar <maguimar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 13:16:14 by maguimar          #+#    #+#             */
-/*   Updated: 2023/04/06 17:13:36 by maguimar         ###   ########.fr       */
+/*   Updated: 2023/07/04 12:16:06 by maguimar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 void	reverse_rotate(t_stack *stack, int times, int what_stack)
 {

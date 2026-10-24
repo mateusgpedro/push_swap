@@ -1,1 +1,19 @@
-.idea
+# Build artifacts
+push_swap
+push_swap.a
+obj/
+*.o
+*.a
+*.gch
+*.dSYM/
+
+# OS & Editor files
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*~
+
+# External tools
+visualizer
+imgui.ini
